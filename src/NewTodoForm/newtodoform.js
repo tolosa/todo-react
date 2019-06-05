@@ -10,7 +10,8 @@ class NewTodoForm extends Component {
     this.setTextState('');
   }
   setTextState(text) {
-    this.setState({text});
+    const isValid = !!text.trim();
+    this.setState({text, isValid});
   }
   render() {
     return(
@@ -20,7 +21,7 @@ class NewTodoForm extends Component {
           <div class="form-group">
             <input onChange={this.handleChange} value={this.state.text} class="form-control form-control-lg" />
           </div>
-          <button onClick={this.handleAddClick} class="btn btn-primary">Add task</button>
+          <button onClick={this.handleAddClick} disabled={!this.state.isValid} class="btn btn-primary">Add task</button>
         </div>
       </div>
     );
