@@ -14,7 +14,7 @@ class NewTodoForm extends Component {
   }
   render() {
     return(
-      <div class="card bg-light mx-3 my-4">
+      <div class="card bg-light">
         <div class="card-body">
           <h5 class="card-title">Add new task</h5>
           <div class="form-group">
