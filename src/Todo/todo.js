@@ -12,7 +12,7 @@ class Todo extends Component {
       <li className="list-group-item d-flex align-items-center">
         {this.props.title}
         <FontAwesomeIcon
-          icon="times-circle" size="lg" className="text-danger ml-auto"
+          icon="times-circle" size="lg" className="text-danger ml-auto cursor-pointer"
           onClick={this.handleOnDelete} />
       </li>
     );
