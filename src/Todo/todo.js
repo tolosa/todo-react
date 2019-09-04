@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Todo extends Component {
   handleOnDelete = () => {
-    this.props.onDelete();
+    if(window.confirm('Are you sure you want to delete this task?')) {
+      this.props.onDelete();
+    }
   }
   render() {
     return (
