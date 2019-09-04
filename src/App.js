@@ -20,9 +20,14 @@ class App extends Component {
     tasks.push(task);
     this.setState({tasks});
   }
+  handleOnDelete = (index) => {
+    const {tasks} = this.state;
+    tasks.splice(index, 1);
+    this.setState({tasks});
+  }
   renderTodos() {
-    return this.state.tasks.map((task) =>
-      <Todo title={task} />
+    return this.state.tasks.map((task, index) =>
+      <Todo title={task} onDelete={() => { this.handleOnDelete(index) }} />
     );
   }
   render() {
