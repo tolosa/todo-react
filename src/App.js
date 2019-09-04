@@ -7,12 +7,6 @@ import TodoList from './TodoList/todolist';
 import Todo from './Todo/todo';
 import NewTodoForm from './NewTodoForm/newtodoform';
 
-// FontAwesome imports
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faTimesCircle);
-
 class App extends Component {
   state = { tasks: [] };
   handleOnAdd = (task) => {
