@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class TodoList extends Component {
-  render() {
-    return(
-      <div className="card">
-        <ul className="list-group list-group-flush">
-          {this.props.children}
-        </ul>
-      </div>
-    );
-  }
+const TodoList = (props) => {
+  return(
+    <div className="card">
+      <ul className="list-group list-group-flush">
+        {props.children}
+      </ul>
+    </div>
+  );
 }
 
 export default TodoList;
