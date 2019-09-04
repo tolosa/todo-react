@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TodoList = (props) => {
+const todoList = (props) => {
   return(
     <div className="card">
       { props.children.length ? (
@@ -14,4 +14,4 @@ const TodoList = (props) => {
   );
 }
 
-export default TodoList;
+export default todoList;
