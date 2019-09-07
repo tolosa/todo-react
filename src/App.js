@@ -11,7 +11,7 @@ class App extends Component {
   state = { tasks: [] };
   handleOnAdd = (task) => {
     const {tasks} = this.state;
-    tasks.push(task);
+    tasks.push({ title: task, isDone: false });
     this.setState({tasks});
   }
   handleOnDelete = (index) => {
@@ -19,9 +19,16 @@ class App extends Component {
     tasks.splice(index, 1);
     this.setState({tasks});
   }
+  handleOnCheck = (index, isDone) => {
+    const {tasks} = this.state;
+    tasks[index].isDone = isDone;
+    this.setState({tasks});
+  }
   renderTodos() {
     return this.state.tasks.map((task, index) =>
-      <Todo title={task} onDelete={() => { this.handleOnDelete(index) }} />
+      <Todo title={task.title} isDone={task.isDone}
+        onChecked={(isDone) => { this.handleOnCheck(index, isDone) }}
+        onDelete={() => { this.handleOnDelete(index) }} />
     );
   }
   render() {
