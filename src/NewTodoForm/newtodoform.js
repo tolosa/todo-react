@@ -2,17 +2,21 @@ import React, { Component } from 'react';
 
 class NewTodoForm extends Component {
   state = { text: '' };
+
   handleChange = (e) => {
     this.setTextState(e.target.value);
   }
+
   handleAddClick = () => {
     this.props.onAdd(this.state.text);
     this.setTextState('');
   }
+
   setTextState(text) {
     const isValid = !!text.trim();
     this.setState({text, isValid});
   }
+
   render() {
     return(
       <div className="card bg-light">
