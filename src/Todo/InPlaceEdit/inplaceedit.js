@@ -1,18 +1,29 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 const InPlaceEdit = (props) => {
   const [isEditModeState, setEditModeState] = useState(false);
+  const [newValueState, setNewValueState] = useState(props.value);
 
   const handleOnEdit = (editing) => {
     setEditModeState(editing);
   }
 
+  const handleValueEdit = (sender) => {
+    setNewValueState(sender.target.value);
+  }
+
+  const handleAcceptEdit = () => {
+    setEditModeState(false);
+    props.onChange(newValueState);
+  }
+
   return(
     isEditModeState ? (
       <div>
-        <input type="text" />
+        <input type="text" value={newValueState} onChange={handleValueEdit} />
+        <FontAwesomeIcon icon={faCheckCircle} onClick={handleAcceptEdit} />
         <FontAwesomeIcon icon={faTimesCircle} onClick={() => handleOnEdit(false)} />
       </div>
     ) : (

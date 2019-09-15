@@ -19,7 +19,7 @@ class Todo extends Component {
       <li className="list-group-item d-flex align-items-center">
         <input type="checkbox" className="mr-2"
           onChange={this.handleOnChecked} checked={this.props.isDone} />
-        <InPlaceEdit value={this.props.title} />
+        <InPlaceEdit value={this.props.title} onChange={(value) => this.props.onChange(value)} />
         <FontAwesomeIcon
           icon="times-circle" size="lg" className="text-danger ml-auto cursor-pointer"
           onClick={this.handleOnDelete} />

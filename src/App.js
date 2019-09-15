@@ -28,10 +28,17 @@ class App extends Component {
     this.setState({tasks});
   }
 
+  handleOnChange = (index, value) => {
+    const {tasks} = this.state; // TODO: refactor handlers to reduce duplication
+    tasks[index].title = value; // TODO: avoid mutation, replace object
+    this.setState({tasks});
+  }
+
   renderTodos() {
     return this.state.tasks.map((task, index) =>
       <Todo title={task.title} isDone={task.isDone}
         onChecked={(isDone) => { this.handleOnCheck(index, isDone) }}
+        onChange={(value) => this.handleOnChange(index, value)}
         onDelete={() => { this.handleOnDelete(index) }} />
     );
   }
