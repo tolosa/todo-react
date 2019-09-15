@@ -37,9 +37,9 @@ class App extends Component {
   renderTodos() {
     return this.state.tasks.map((task, index) =>
       <Todo title={task.title} isDone={task.isDone}
-        onChecked={(isDone) => { this.handleOnCheck(index, isDone) }}
+        onChecked={(isDone) => this.handleOnCheck(index, isDone)}
         onChange={(value) => this.handleOnChange(index, value)}
-        onDelete={() => { this.handleOnDelete(index) }} />
+        onDelete={() => this.handleOnDelete(index)} />
     );
   }
 
