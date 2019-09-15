@@ -4,9 +4,10 @@ import { faEdit, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-sv
 
 const InPlaceEdit = (props) => {
   const [isEditModeState, setEditModeState] = useState(false);
-  const [newValueState, setNewValueState] = useState(props.value);
+  const [newValueState, setNewValueState] = useState();
 
   const handleOnEdit = (editing) => {
+    setNewValueState(props.value);
     setEditModeState(editing);
   }
 
