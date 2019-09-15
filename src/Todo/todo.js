@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import InPlaceEdit from './InPlaceEdit/inplaceedit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Todo extends Component {
@@ -18,7 +19,7 @@ class Todo extends Component {
       <li className="list-group-item d-flex align-items-center">
         <input type="checkbox" className="mr-2"
           onChange={this.handleOnChecked} checked={this.props.isDone} />
-        {this.props.title}
+        <InPlaceEdit value={this.props.title} />
         <FontAwesomeIcon
           icon="times-circle" size="lg" className="text-danger ml-auto cursor-pointer"
           onClick={this.handleOnDelete} />
