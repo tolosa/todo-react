@@ -23,13 +23,17 @@ const InPlaceEdit = (props) => {
   }
 
   const renderViewMode = () => (
-    <div>
-      {props.value}
-      <FontAwesomeIcon icon={faEdit} onClick={() => handleOnEdit(true)} />
+    // TODO: avoid container duplication
+    <div class="inplaceedit form-group d-block flex-grow-1">
+      <div class="form-control-plaintext">{props.value}</div>
+      <div class="actions">
+        <FontAwesomeIcon icon={faEdit} onClick={() => handleOnEdit(true)} />
+      </div>
     </div>
   )
 
   const renderEditMode = () => (
+    // TODO: avoid container duplication
     <div class="inplaceedit form-group d-block flex-grow-1">
       <input type="text" value={newValueState} onChange={handleValueEdit} class="form-control" />
       <div class="actions">
