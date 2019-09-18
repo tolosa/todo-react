@@ -41,8 +41,8 @@ const InPlaceEdit = (props) => {
 
   const renderViewMode = () => (
     <>
-      <div class="form-control-plaintext">{props.value}</div>
-      <div class="actions">
+      <div className="form-control-plaintext">{props.value}</div>
+      <div className="actions">
         <FontAwesomeIcon icon={faEdit} onClick={() => handleOnEdit(true)} className="text-success" />
       </div>
     </>
@@ -53,7 +53,7 @@ const InPlaceEdit = (props) => {
       <input type="text" className="form-control"
         value={newValueState} ref={inputRef}
         onChange={handleValueEdit} onKeyUp={handleKeyUp} />
-      <div class="actions">
+      <div className="actions">
         <FontAwesomeIcon icon={faCheckCircle} onClick={handleAcceptEdit} className="text-success" />
         <FontAwesomeIcon icon={faTimesCircle} onClick={() => handleOnEdit(false)} className="text-danger" />
       </div>
@@ -61,7 +61,7 @@ const InPlaceEdit = (props) => {
   )
 
   return(
-    <div class="inplaceedit form-group d-block flex-grow-1">
+    <div className="inplaceedit form-group d-block flex-grow-1">
       { isEditModeState ? renderEditMode() : renderViewMode() }
     </div>
   );
