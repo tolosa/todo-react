@@ -28,6 +28,10 @@ const InPlaceEdit = (props) => {
     props.onChange(newValueState);
   }
 
+  const handleKeyPress = (e) => {
+    if(e.key == 'Enter') handleAcceptEdit();
+  }
+
   const renderViewMode = () => (
     <>
       <div class="form-control-plaintext">{props.value}</div>
@@ -40,7 +44,8 @@ const InPlaceEdit = (props) => {
   const renderEditMode = () => (
     <>
       <input type="text" className="form-control"
-        value={newValueState} onChange={handleValueEdit} ref={inputRef} />
+        value={newValueState} ref={inputRef}
+        onChange={handleValueEdit} onKeyPress={handleKeyPress} />
       <div class="actions">
         <FontAwesomeIcon icon={faCheckCircle} onClick={handleAcceptEdit} className="text-success" />
         <FontAwesomeIcon icon={faTimesCircle} onClick={() => handleOnEdit(false)} className="text-danger" />
