@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,6 +7,12 @@ import './inplaceedit.css';
 const InPlaceEdit = (props) => {
   const [isEditModeState, setEditModeState] = useState(false);
   const [newValueState, setNewValueState] = useState();
+
+  const inputRef = useRef();
+
+  useEffect(() => {
+    if(isEditModeState) inputRef.current.focus();
+  }, [isEditModeState]);
 
   const handleOnEdit = (editing) => {
     setNewValueState(props.value);
@@ -22,6 +28,17 @@ const InPlaceEdit = (props) => {
     props.onChange(newValueState);
   }
 
+  const handleKeyUp = (e) => {
+    switch(e.key) {
+      case 'Enter':
+        handleAcceptEdit();
+        break;
+      case 'Escape':
+        handleOnEdit(false);
+        break;
+    }
+  }
+
   const renderViewMode = () => (
     <>
       <div class="form-control-plaintext">{props.value}</div>
@@ -33,7 +50,9 @@ const InPlaceEdit = (props) => {
 
   const renderEditMode = () => (
     <>
-      <input type="text" value={newValueState} onChange={handleValueEdit} class="form-control" />
+      <input type="text" className="form-control"
+        value={newValueState} ref={inputRef}
+        onChange={handleValueEdit} onKeyUp={handleKeyUp} />
       <div class="actions">
         <FontAwesomeIcon icon={faCheckCircle} onClick={handleAcceptEdit} className="text-success" />
         <FontAwesomeIcon icon={faTimesCircle} onClick={() => handleOnEdit(false)} className="text-danger" />
