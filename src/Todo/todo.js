@@ -21,7 +21,7 @@ class Todo extends Component {
           onChange={this.handleOnChecked} checked={this.props.isDone} />
         <InPlaceEdit value={this.props.title} onChange={(value) => this.props.onChange(value)} />
         <FontAwesomeIcon
-          icon="times-circle" size="lg" className="text-danger ml-auto cursor-pointer"
+          icon="times-circle" size="lg" className="text-danger ml-1 cursor-pointer"
           onClick={this.handleOnDelete} />
       </li>
     );

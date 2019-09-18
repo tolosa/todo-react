@@ -1,12 +1,11 @@
 .inplaceedit {
   position: relative;
   margin: 0;
-  padding-right: 5px;
 }
 
 .inplaceedit .actions {
   position: absolute;
-  right: 5px;
+  right: 0;
   top: 0;
   bottom: 0;
   display: flex;
