@@ -26,7 +26,7 @@ const InPlaceEdit = (props) => {
     <>
       <div class="form-control-plaintext">{props.value}</div>
       <div class="actions">
-        <FontAwesomeIcon icon={faEdit} onClick={() => handleOnEdit(true)} />
+        <FontAwesomeIcon icon={faEdit} onClick={() => handleOnEdit(true)} className="text-success" />
       </div>
     </>
   )
@@ -35,8 +35,8 @@ const InPlaceEdit = (props) => {
     <>
       <input type="text" value={newValueState} onChange={handleValueEdit} class="form-control" />
       <div class="actions">
-        <FontAwesomeIcon icon={faCheckCircle} onClick={handleAcceptEdit} />
-        <FontAwesomeIcon icon={faTimesCircle} onClick={() => handleOnEdit(false)} />
+        <FontAwesomeIcon icon={faCheckCircle} onClick={handleAcceptEdit} className="text-success" />
+        <FontAwesomeIcon icon={faTimesCircle} onClick={() => handleOnEdit(false)} className="text-danger" />
       </div>
     </>
   )
