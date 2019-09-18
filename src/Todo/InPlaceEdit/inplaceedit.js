@@ -20,19 +20,23 @@ const InPlaceEdit = (props) => {
     props.onChange(newValueState);
   }
 
+  const renderViewMode = () => (
+    <div>
+      {props.value}
+      <FontAwesomeIcon icon={faEdit} onClick={() => handleOnEdit(true)} />
+    </div>
+  )
+
+  const renderEditMode = () => (
+    <div>
+      <input type="text" value={newValueState} onChange={handleValueEdit} />
+      <FontAwesomeIcon icon={faCheckCircle} onClick={handleAcceptEdit} />
+      <FontAwesomeIcon icon={faTimesCircle} onClick={() => handleOnEdit(false)} />
+    </div>
+  )
+
   return(
-    isEditModeState ? (
-      <div>
-        <input type="text" value={newValueState} onChange={handleValueEdit} />
-        <FontAwesomeIcon icon={faCheckCircle} onClick={handleAcceptEdit} />
-        <FontAwesomeIcon icon={faTimesCircle} onClick={() => handleOnEdit(false)} />
-      </div>
-    ) : (
-      <div>
-        {props.value}
-        <FontAwesomeIcon icon={faEdit} onClick={() => handleOnEdit(true)} />
-      </div>
-    )
+    isEditModeState ? renderEditMode() : renderViewMode()
   );
 }
 
