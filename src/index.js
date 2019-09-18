@@ -6,12 +6,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-// FontAwesome imports
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faTimesCircle);
-
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

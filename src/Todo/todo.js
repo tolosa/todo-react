@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import InPlaceEdit from './InPlaceEdit/inplaceedit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 class Todo extends Component {
   handleOnDelete = () => {
@@ -18,9 +20,9 @@ class Todo extends Component {
       <li className="list-group-item d-flex align-items-center">
         <input type="checkbox" className="mr-2"
           onChange={this.handleOnChecked} checked={this.props.isDone} />
-        {this.props.title}
+        <InPlaceEdit value={this.props.title} onChange={(value) => this.props.onChange(value)} />
         <FontAwesomeIcon
-          icon="times-circle" size="lg" className="text-danger ml-auto cursor-pointer"
+          icon={faTrashAlt} size="lg" className="text-danger ml-2 cursor-pointer"
           onClick={this.handleOnDelete} />
       </li>
     );
