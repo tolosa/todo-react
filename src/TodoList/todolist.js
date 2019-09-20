@@ -1,5 +1,5 @@
 import React from 'react';
-import Todo from './../Todo/todo';
+import Todo from '../Todo/todo';
 
 const todoList = (props) => {
 
@@ -12,11 +12,12 @@ const todoList = (props) => {
           onDelete={() => props.onDelete(index)} />) }
     </ul>
 
+  const renderEmptyMessage = () =>
+    <span className="lead text-muted text-uppercase p-3">No tasks to show</span>
+
   return(
     <div className="card">
-      { props.tasks.length ? renderTodos() : (
-        <span className="lead text-muted text-uppercase p-3">No tasks to show</span>
-      ) }
+      { props.tasks.length ? renderTodos() : renderEmptyMessage() }
     </div>
   )
 }
