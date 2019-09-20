@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-// App components
 import Header from './Header/header';
 import TodoList from './TodoList/todolist';
-import Todo from './Todo/todo';
 import NewTodoForm from './NewTodoForm/newtodoform';
 
 class App extends Component {
@@ -34,23 +32,15 @@ class App extends Component {
     this.setState({tasks});
   }
 
-  renderTodos() {
-    return this.state.tasks.map((task, index) =>
-      <Todo title={task.title} isDone={task.isDone}
-        onChecked={(isDone) => this.handleOnCheck(index, isDone)}
-        onChange={(value) => this.handleOnChange(index, value)}
-        onDelete={() => this.handleOnDelete(index)} />
-    );
-  }
-
   render() {
     return (
       <div className="App">
         <Header title="Awesome React To-Do!" />
         <NewTodoForm onAdd={this.handleOnAdd} />
-        <TodoList>
-          {this.renderTodos()}
-        </TodoList>
+        <TodoList tasks={this.state.tasks}
+          onChecked={(index, isDone) => this.handleOnCheck(index, isDone)}
+          onChange={(index, value) => this.handleOnChange(index, value)}
+          onDelete={(index) => this.handleOnDelete(index)} />
       </div>
     );
   }
