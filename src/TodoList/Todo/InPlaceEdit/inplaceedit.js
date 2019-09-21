@@ -11,7 +11,7 @@ const InPlaceEdit = (props) => {
   const inputRef = useRef();
 
   useEffect(() => {
-    if(isEditModeState) inputRef.current.focus();
+    if (isEditModeState) inputRef.current.focus();
   }, [isEditModeState]);
 
   const handleOnEdit = (editing) => {
@@ -29,7 +29,7 @@ const InPlaceEdit = (props) => {
   }
 
   const handleKeyUp = (e) => {
-    switch(e.key) {
+    switch (e.key) {
       case 'Enter':
         handleAcceptEdit();
         break;
@@ -60,9 +60,9 @@ const InPlaceEdit = (props) => {
     </>
   )
 
-  return(
+  return (
     <div className="inplaceedit form-group d-block flex-grow-1">
-      { isEditModeState ? renderEditMode() : renderViewMode() }
+      {isEditModeState ? renderEditMode() : renderViewMode()}
     </div>
   );
 }

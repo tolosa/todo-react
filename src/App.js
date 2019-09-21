@@ -9,27 +9,27 @@ class App extends Component {
   state = { tasks: [] };
 
   handleOnAdd = (task) => {
-    const {tasks} = this.state;
+    const { tasks } = this.state;
     tasks.push({ title: task, isDone: false });
-    this.setState({tasks});
+    this.setState({ tasks });
   }
 
   handleOnDelete = (index) => {
-    const {tasks} = this.state;
+    const { tasks } = this.state;
     tasks.splice(index, 1);
-    this.setState({tasks});
+    this.setState({ tasks });
   }
 
   handleOnCheck = (index, isDone) => {
-    const {tasks} = this.state;
+    const { tasks } = this.state;
     tasks[index].isDone = isDone;
-    this.setState({tasks});
+    this.setState({ tasks });
   }
 
   handleOnChange = (index, value) => {
-    const {tasks} = this.state; // TODO: refactor handlers to reduce duplication
+    const { tasks } = this.state; // TODO: refactor handlers to reduce duplication
     tasks[index].title = value; // TODO: avoid mutation, replace object
-    this.setState({tasks});
+    this.setState({ tasks });
   }
 
   render() {

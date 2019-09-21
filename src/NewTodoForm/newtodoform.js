@@ -14,11 +14,11 @@ class NewTodoForm extends Component {
 
   setTextState(text) {
     const isValid = !!text.trim();
-    this.setState({text, isValid});
+    this.setState({ text, isValid });
   }
 
   render() {
-    return(
+    return (
       <div className="card bg-light">
         <div className="card-body">
           <h5 className="card-title">Add new task</h5>
