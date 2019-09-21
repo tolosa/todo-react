@@ -6,19 +6,19 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 class Todo extends Component {
   handleOnDelete = () => {
-    if(window.confirm('Are you sure you want to delete this task?')) {
+    if (window.confirm('Are you sure you want to delete this task?')) {
       this.props.onDelete();
     }
   }
 
-  handleOnChecked = (checked) => {
+  handleOnChange = (checked) => {
     this.props.onChecked(checked);
   }
 
   render() {
     return (
       <li className="list-group-item d-flex align-items-center">
-        <CustomCheckbox checked={this.props.isDone} onChange={this.handleOnChecked} />
+        <CustomCheckbox checked={this.props.isDone} onChange={this.handleOnChange} />
         <InPlaceEdit value={this.props.title} onChange={(value) => this.props.onChange(value)} />
         <FontAwesomeIcon
           icon={faTrashAlt} size="lg" className="text-danger ml-2 cursor-pointer"
