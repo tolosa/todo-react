@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InPlaceEdit from './InPlaceEdit/inplaceedit';
+import CustomCheckbox from './CustomCheckbox/customcheckbox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,16 +11,14 @@ class Todo extends Component {
     }
   }
 
-  handleOnChecked = (event) => {
-    const checked = event.currentTarget.checked;
+  handleOnChecked = (checked) => {
     this.props.onChecked(checked);
   }
 
   render() {
     return (
       <li className="list-group-item d-flex align-items-center">
-        <input type="checkbox" className="mr-2"
-          onChange={this.handleOnChecked} checked={this.props.isDone} />
+        <CustomCheckbox checked={this.props.isDone} onChange={this.handleOnChecked} />
         <InPlaceEdit value={this.props.title} onChange={(value) => this.props.onChange(value)} />
         <FontAwesomeIcon
           icon={faTrashAlt} size="lg" className="text-danger ml-2 cursor-pointer"
