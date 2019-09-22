@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
+import axios from 'axios';
 
 import Header from './Header/header';
 import TodoList from './TodoList/todolist';
 import NewTodoForm from './NewTodoForm/newtodoform';
+
+import './App.css';
 
 class App extends Component {
   state = { tasks: [] };
@@ -30,6 +32,17 @@ class App extends Component {
     const { tasks } = this.state; // TODO: refactor handlers to reduce duplication
     tasks[index].title = value; // TODO: avoid mutation, replace object
     this.setState({ tasks });
+  }
+
+  componentDidMount() {
+    axios.get('/tasks.json', this.state.tasks)
+      .then(response => {
+        this.setState({ tasks: response.data || [] });
+      });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    axios.put('/tasks.json', this.state.tasks);
   }
 
   render() {
