@@ -51,9 +51,9 @@ class App extends Component {
         <Header title="Awesome React To-Do!" />
         <NewTodoForm onAdd={this.handleOnAdd} />
         <TodoList tasks={this.state.tasks}
-          onChecked={(index, isDone) => this.handleOnCheck(index, isDone)}
-          onChange={(index, value) => this.handleOnChange(index, value)}
-          onDelete={(index) => this.handleOnDelete(index)} />
+          onChecked={this.handleOnCheck}
+          onChange={this.handleOnChange}
+          onDelete={this.handleOnDelete} />
       </div>
     );
   }
