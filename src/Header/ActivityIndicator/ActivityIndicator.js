@@ -8,9 +8,9 @@ const ActivityIndicator = (props) => {
   const [isDoneState, setDoneState] = useState(false);
 
   useEffect(() => {
-    axios.interceptors.request.use(config => {
+    axios.interceptors.request.use(request => {
       setLoadingState(true);
-      return config;
+      return request;
     });
     axios.interceptors.response.use(response => {
       setLoadingState(false);
