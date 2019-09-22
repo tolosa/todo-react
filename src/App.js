@@ -8,7 +8,7 @@ import NewTodoForm from './NewTodoForm/newtodoform';
 import './App.css';
 
 class App extends Component {
-  state = { tasks: [] };
+  state = { tasks: null };
 
   handleOnAdd = (task) => {
     const { tasks } = this.state;
