@@ -16,7 +16,7 @@ const ActivityIndicator = (props) => {
       setLoadingState(false);
       return response;
     });
-  }, []);
+  }, []); // TODO: unmount interceptors when no longer used
 
   useEffect(() => {
     if (!isLoadingState) {
