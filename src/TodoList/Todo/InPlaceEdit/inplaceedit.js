@@ -41,7 +41,7 @@ const InPlaceEdit = (props) => {
 
   const renderViewMode = () => (
     <>
-      <div className="form-control-plaintext">{props.value}</div>
+      <div className="form-control-plaintext text-reset">{props.value}</div>
       <div className="actions">
         <FontAwesomeIcon icon={faEdit} onClick={() => handleOnEdit(true)} className="text-success" />
       </div>

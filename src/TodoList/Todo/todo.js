@@ -17,7 +17,7 @@ class Todo extends Component {
 
   render() {
     return (
-      <li className="list-group-item d-flex align-items-center">
+      <li className={`list-group-item d-flex align-items-center ${this.props.isDone ? "text-muted text-striked" : null}`}>
         <CustomCheckbox checked={this.props.isDone} onChange={this.handleOnChange} />
         <InPlaceEdit value={this.props.title} onChange={this.props.onChange} />
         <FontAwesomeIcon onClick={this.handleOnDelete} icon={faTrashAlt}
