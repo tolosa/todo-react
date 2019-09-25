@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   updateTasks(proc) {
-    const { tasks } = this.state;
+    const tasks = this.state.tasks.splice(0);
     proc(tasks);
     this.setState({ tasks });
   }
