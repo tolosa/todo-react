@@ -11,26 +11,32 @@ class App extends Component {
   state = { tasks: null };
 
   handleOnAdd = (task) => {
-    const { tasks } = this.state;
-    tasks.push({ title: task, isDone: false });
-    this.setState({ tasks });
+    this.updateTasks((tasks) => {
+      tasks.push({ title: task, isDone: false });
+    });
   }
 
   handleOnDelete = (index) => {
-    const { tasks } = this.state;
-    tasks.splice(index, 1);
-    this.setState({ tasks });
+    this.updateTasks((tasks) => {
+      tasks.splice(index, 1);
+    });
   }
 
   handleOnCheck = (index, isDone) => {
-    const { tasks } = this.state;
-    tasks[index].isDone = isDone;
-    this.setState({ tasks });
+    this.updateTasks((tasks) => {
+      tasks[index].isDone = isDone;
+    });
   }
 
   handleOnChange = (index, value) => {
-    const { tasks } = this.state; // TODO: refactor handlers to reduce duplication
-    tasks[index].title = value; // TODO: avoid mutation, replace object
+    this.updateTasks((tasks) => {
+      tasks[index].title = value;
+    });
+  }
+
+  updateTasks(proc) {
+    const { tasks } = this.state;
+    proc(tasks);
     this.setState({ tasks });
   }
 
