@@ -48,7 +48,8 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    axios.put('/tasks.json', this.state.tasks);
+    if (prevState.tasks && prevState.tasks !== this.state.tasks)
+      axios.put('/tasks.json', this.state.tasks);
   }
 
   render() {
