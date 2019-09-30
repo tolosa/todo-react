@@ -1,10 +1,9 @@
 /* eslint-disable default-case */
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 
 const NewTodoForm = (props) => {
   const [textState, setTextState] = useState('');
   const [isValidState, setIsValidState] = useState(false);
-  const inputRef = useRef();
 
   const handleAddClick = () => {
     props.onAdd(textState);
@@ -29,7 +28,7 @@ const NewTodoForm = (props) => {
       <div className="card-body">
         <h5 className="card-title">Add new task</h5>
         <div className="form-group">
-          <input value={textState} onChange={handleOnChange} onKeyUp={handleKeyUp} ref={inputRef} className="form-control form-control-lg" />
+          <input value={textState} onChange={handleOnChange} onKeyUp={handleKeyUp} className="form-control form-control-lg" />
         </div>
         <button onClick={handleAddClick} disabled={!isValidState} type="button" className="btn btn-primary">Add task</button>
       </div>
