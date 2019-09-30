@@ -9,7 +9,7 @@ const NewTodoForm = (props) => {
   const handleAddClick = () => {
     props.onAdd(textState);
     setTextState('');
-    setIsValidState(false);
+    setIsValidState(false); // TODO: check automatically after state change, avoid harcode
   };
 
   const handleOnChange = (e) => {
