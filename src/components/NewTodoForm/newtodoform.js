@@ -1,35 +1,34 @@
-import React, { Component } from 'react';
+import React, { useState, useRef } from 'react';
 
-class NewTodoForm extends Component {
-  state = { text: '' };
+const NewTodoForm = (props) => {
+  const [textState, setTextState] = useState('');
+  const [isValidState, setIsValidState] = useState(false);
+  const inputRef = useRef();
 
-  handleChange = (e) => {
-    this.setTextState(e.target.value);
-  }
+  const handleAddClick = () => {
+    props.onAdd(textState);
+    setTextState('');
+    setIsValidState(false);
+  };
 
-  handleAddClick = () => {
-    this.props.onAdd(this.state.text);
-    this.setTextState('');
-  }
+  const handleOnChange = (e) => {
+    const { value } = e.target;
+    const isValid = !!value.trim();
+    setIsValidState(isValid);
+    setTextState(value);
+  };
 
-  setTextState(text) {
-    const isValid = !!text.trim();
-    this.setState({ text, isValid });
-  }
-
-  render() {
-    return (
-      <div className="card bg-light">
-        <div className="card-body">
-          <h5 className="card-title">Add new task</h5>
-          <div className="form-group">
-            <input onChange={this.handleChange} value={this.state.text} className="form-control form-control-lg" />
-          </div>
-          <button onClick={this.handleAddClick} disabled={!this.state.isValid} className="btn btn-primary">Add task</button>
+  return (
+    <div className="card bg-light">
+      <div className="card-body">
+        <h5 className="card-title">Add new task</h5>
+        <div className="form-group">
+          <input value={textState} onChange={handleOnChange} ref={inputRef} className="form-control form-control-lg" />
         </div>
+        <button onClick={handleAddClick} disabled={!isValidState} className="btn btn-primary">Add task</button>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default NewTodoForm;
