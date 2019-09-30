@@ -25,7 +25,7 @@ const NewTodoForm = (props) => {
         <div className="form-group">
           <input value={textState} onChange={handleOnChange} ref={inputRef} className="form-control form-control-lg" />
         </div>
-        <button onClick={handleAddClick} disabled={!isValidState} className="btn btn-primary">Add task</button>
+        <button onClick={handleAddClick} disabled={!isValidState} type="button" className="btn btn-primary">Add task</button>
       </div>
     </div>
   );
