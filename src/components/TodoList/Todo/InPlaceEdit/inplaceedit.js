@@ -7,8 +7,6 @@ import './inplaceedit.css';
 
 const InPlaceEdit = (props) => {
   const [isEditModeState, setEditModeState] = useState(false);
-  const [newValueState, setNewValueState] = useState();
-
   const inputRef = useRef();
 
   useEffect(() => {
@@ -16,17 +14,12 @@ const InPlaceEdit = (props) => {
   }, [isEditModeState]);
 
   const handleOnEdit = (editing) => {
-    setNewValueState(props.value);
     setEditModeState(editing);
-  };
-
-  const handleValueEdit = (sender) => {
-    setNewValueState(sender.target.value);
   };
 
   const handleAcceptEdit = () => {
     setEditModeState(false);
-    props.onChange(newValueState);
+    props.onChange(inputRef.current.value);
   };
 
   const handleKeyUp = (e) => {
@@ -54,8 +47,7 @@ const InPlaceEdit = (props) => {
   const renderEditMode = () => (
     <>
       <input type="text" className="form-control"
-        value={newValueState} ref={inputRef}
-        onChange={handleValueEdit} onKeyUp={handleKeyUp} />
+        defaultValue={props.value} ref={inputRef} onKeyUp={handleKeyUp} />
       <div className="actions">
         <FontAwesomeIcon icon={faCheckCircle} onClick={handleAcceptEdit} className="text-success" />
         <FontAwesomeIcon icon={faTimesCircle} onClick={() => handleOnEdit(false)} className="text-danger" />
