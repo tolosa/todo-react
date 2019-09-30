@@ -10,6 +10,18 @@ import './App.css';
 class App extends Component {
   state = { tasks: null };
 
+  componentDidMount() {
+    axios.get('/tasks.json', this.state.tasks)
+      .then(response => {
+        this.setState({ tasks: response.data || [] });
+      });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.tasks && prevState.tasks !== this.state.tasks)
+      axios.put('/tasks.json', this.state.tasks);
+  }
+
   handleOnAdd = (task) => {
     this.updateTasks((tasks) => {
       tasks.push({ title: task, isDone: false });
@@ -38,18 +50,6 @@ class App extends Component {
     const tasks = this.state.tasks.splice(0);
     proc(tasks);
     this.setState({ tasks });
-  }
-
-  componentDidMount() {
-    axios.get('/tasks.json', this.state.tasks)
-      .then(response => {
-        this.setState({ tasks: response.data || [] });
-      });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.tasks && prevState.tasks !== this.state.tasks)
-      axios.put('/tasks.json', this.state.tasks);
   }
 
   render() {
