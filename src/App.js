@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import Header from './Header/header';
-import TodoList from './TodoList/todolist';
-import NewTodoForm from './NewTodoForm/newtodoform';
+import Header from './components/Header/header';
+import TodoList from './components/TodoList/todolist';
+import NewTodoForm from './components/NewTodoForm/newtodoform';
 
 import './App.css';
 
