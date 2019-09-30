@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -23,27 +24,23 @@ class App extends Component {
   }
 
   handleOnAdd = (task) => {
-    this.updateTasks((tasks) => {
-      tasks.push({ title: task, isDone: false });
-    });
+    this.updateTasks((tasks) =>
+      tasks.push({ title: task, isDone: false }));
   }
 
   handleOnDelete = (index) => {
-    this.updateTasks((tasks) => {
-      tasks.splice(index, 1);
-    });
+    this.updateTasks((tasks) =>
+      tasks.splice(index, 1));
   }
 
   handleOnCheck = (index, isDone) => {
-    this.updateTasks((tasks) => {
-      tasks[index].isDone = isDone;
-    });
+    this.updateTasks((tasks) =>
+      tasks[index].isDone = isDone);
   }
 
   handleOnChange = (index, value) => {
-    this.updateTasks((tasks) => {
-      tasks[index].title = value;
-    });
+    this.updateTasks((tasks) =>
+      tasks[index].title = value);
   }
 
   updateTasks(proc) {
