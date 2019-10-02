@@ -24,11 +24,6 @@ class App extends Component {
       axios.put('/tasks.json', this.state.tasks);
   }
 
-  handleOnChange = (index, value) => {
-    this.updateTasks((tasks) =>
-      tasks[index].title = value);
-  }
-
   updateTasks(proc) {
     const tasks = this.state.tasks.splice(0);
     proc(tasks);
@@ -40,8 +35,7 @@ class App extends Component {
       <div className="App">
         <Header title="Awesome React To-Do!" />
         <NewTodoForm />
-        <TodoList
-          onChange={this.handleOnChange} />
+        <TodoList />
       </div>
     );
   }
