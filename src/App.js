@@ -29,11 +29,6 @@ class App extends Component {
       tasks.splice(index, 1));
   }
 
-  handleOnCheck = (index, isDone) => {
-    this.updateTasks((tasks) =>
-      tasks[index].isDone = isDone);
-  }
-
   handleOnChange = (index, value) => {
     this.updateTasks((tasks) =>
       tasks[index].title = value);
@@ -51,7 +46,6 @@ class App extends Component {
         <Header title="Awesome React To-Do!" />
         <NewTodoForm />
         <TodoList
-          onChecked={this.handleOnCheck}
           onChange={this.handleOnChange}
           onDelete={this.handleOnDelete} />
       </div>
