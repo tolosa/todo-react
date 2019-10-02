@@ -15,10 +15,10 @@ const todoList = (props) => {
           onChecked={(isDone) => props.onChecked(index, isDone)}
           onChange={(value) => props.onChange(index, value)}
           onDelete={() => props.onDelete(index)} />)}
-    </ul>
+    </ul>;
 
   const renderMessage = (content) =>
-    <span className="lead text-muted text-uppercase p-3">{content}</span>
+    <span className="lead text-muted text-uppercase p-3">{content}</span>;
 
   const renderContent = () => {
     if (!props.tasks) {
@@ -33,17 +33,21 @@ const todoList = (props) => {
     } else {
       return renderTodos();
     }
-  }
+  };
 
   return (
     <div className="card">
       {renderContent()}
     </div>
-  )
+  );
 };
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,
 });
 
-export default connect(mapStateToProps)(todoList);
+const mapDispatchToProps = (dispatch) => ({
+  onChecked: (index, isDone) => dispatch({ type: 'CHANGE_STATUS', index, isDone }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(todoList);
