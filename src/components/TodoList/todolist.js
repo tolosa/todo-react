@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Todo from './Todo/todo';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner as spinnerIcon } from '@fortawesome/free-solid-svg-icons';
+
+import Todo from './Todo/todo';
 
 const todoList = (props) => {
 
