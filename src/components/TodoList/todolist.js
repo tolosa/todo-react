@@ -48,6 +48,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onChecked: (index, isDone) => dispatch({ type: 'CHANGE_STATUS', index, isDone }),
+  onDelete: (index) => dispatch({ type: 'DELETE', index }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(todoList);
