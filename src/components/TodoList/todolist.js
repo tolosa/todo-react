@@ -48,6 +48,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onChecked: (index, isDone) => dispatch({ type: 'CHANGE_STATUS', index, isDone }),
+  onChange: (index, text) => dispatch({ type: 'EDIT', index, text }),
   onDelete: (index) => dispatch({ type: 'DELETE', index }),
 });
 

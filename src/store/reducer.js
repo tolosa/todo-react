@@ -15,6 +15,9 @@ const reducer = (state = initalState, action) => {
     case 'CHANGE_STATUS':
       tasks[action.index].isDone = action.isDone; // TODO: avoid to mutate original objects
       break;
+    case 'EDIT':
+      tasks[action.index].title = action.text; // TODO: avoid code duplication
+      break;
   }
   return { tasks };
 };
