@@ -37,10 +37,8 @@ const NewTodoForm = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onAdd: (text) => dispatch({ type: 'ADD_TASK', text }),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  onAdd: (text) => dispatch({ type: 'ADD_TASK', text }),
+});
 
 export default connect(null, mapDispatchToProps)(NewTodoForm);
