@@ -54,7 +54,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header title="Awesome React To-Do!" />
-        <NewTodoForm onAdd={this.handleOnAdd} />
+        <NewTodoForm />
         <TodoList
           onChecked={this.handleOnCheck}
           onChange={this.handleOnChange}
