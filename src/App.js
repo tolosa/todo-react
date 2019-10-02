@@ -24,11 +24,6 @@ class App extends Component {
       axios.put('/tasks.json', this.state.tasks);
   }
 
-  handleOnAdd = (task) => {
-    this.updateTasks((tasks) =>
-      tasks.push({ title: task, isDone: false }));
-  }
-
   handleOnDelete = (index) => {
     this.updateTasks((tasks) =>
       tasks.splice(index, 1));
