@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import Todo from './Todo/todo';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -38,6 +40,10 @@ const todoList = (props) => {
       {renderContent()}
     </div>
   )
-}
+};
 
-export default todoList;
+const mapStateToProps = state => {
+  return { tasks: state.tasks };
+};
+
+export default connect(mapStateToProps)(todoList);

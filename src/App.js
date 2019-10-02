@@ -11,6 +11,7 @@ import './App.css';
 class App extends Component {
   state = { tasks: null };
 
+  // TODO: move all this to redux
   componentDidMount() {
     axios.get('/tasks.json', this.state.tasks)
       .then(response => {
@@ -54,7 +55,7 @@ class App extends Component {
       <div className="App">
         <Header title="Awesome React To-Do!" />
         <NewTodoForm onAdd={this.handleOnAdd} />
-        <TodoList tasks={this.state.tasks}
+        <TodoList
           onChecked={this.handleOnCheck}
           onChange={this.handleOnChange}
           onDelete={this.handleOnDelete} />
