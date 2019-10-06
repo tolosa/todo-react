@@ -1,21 +1,22 @@
 /* eslint-disable no-return-assign */
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 import Header from './components/Header/header';
 import TodoList from './components/TodoList/todolist';
 import NewTodoForm from './components/NewTodoForm/newtodoform';
+
+import { fetchTasks } from './redux-flow/reducers/tasks/actions'
 
 import './App.css';
 
 class App extends Component {
   state = { tasks: null };
 
-  componentDidMount() {
-    axios.get('/tasks.json', this.state.tasks)
-      .then(response => {
-        this.setState({ tasks: response.data || [] });
-      });
+  async componentDidMount() {
+    await this.props.fetchTasks()
+      .then(() => this.setState({ tasks: this.props.tasks }))
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -50,6 +51,7 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <div className="App">
         <Header title="Awesome React To-Do!" />
@@ -63,4 +65,19 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  const {
+    tasks
+  } = state
+
+  return { ...tasks}
+}
+
+const mapDispatchToProps = {
+  fetchTasks
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
