@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner as spinnerIcon } from '@fortawesome/free-solid-svg-icons';
+import * as actions from '../../store/actions';
 
 import Todo from './Todo/todo';
 
@@ -47,9 +48,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onChecked: (index, isDone) => dispatch({ type: 'CHANGE_STATUS', index, isDone }),
-  onChange: (index, text) => dispatch({ type: 'EDIT', index, text }),
-  onDelete: (index) => dispatch({ type: 'DELETE', index }),
+  onChecked: (index, isDone) => dispatch(actions.changeStatus(index, isDone)),
+  onChange: (index, text) => dispatch(actions.edit(index, text)),
+  onDelete: (index) => dispatch(actions.remove(index)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(todoList);
