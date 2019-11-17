@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner as spinnerIcon } from '@fortawesome/free-solid-svg-icons';
-import * as actions from '../../store/actions';
+import * as actions from '../../store/actionCreators';
 
 import Todo from './Todo/todo';
 

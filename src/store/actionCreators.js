@@ -1,16 +1,18 @@
+import * as actions from './actionTypes';
+
 export const changeStatus = (index, isDone) => ({
-  type: 'CHANGE_STATUS',
+  type: actions.CHANGE_STATUS,
   index,
   isDone,
 });
 
 export const edit = (index, text) => ({
-  type: 'EDIT',
+  type: actions.EDIT,
   index,
   text,
 });
 
 export const remove = (index) => ({
-  type: 'DELETE',
+  type: actions.DELETE,
   index,
 });
