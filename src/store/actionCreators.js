@@ -14,6 +14,11 @@ export const setTasks = (tasks) => ({
   tasks,
 });
 
+export const addTask = (text) => ({
+  type: actions.ADD_TASK,
+  text,
+});
+
 export const changeStatus = (index, isDone) => ({
   type: actions.CHANGE_STATUS,
   index,
