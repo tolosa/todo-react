@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 // redux stuff
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk';
 import reducer from './store/reducer';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -17,7 +18,9 @@ axios.defaults.baseURL = 'https://todo-react-leo.firebaseio.com/';
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
   reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(thunkMiddleware),
+  // TODO: re enable dev tools
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 /* eslint-enable */
 

@@ -8,6 +8,9 @@ const initalState = {
 const reducer = (state = initalState, action) => {
   const tasks = state.tasks.splice(0);
   switch (action.type) {
+    case actions.SET_TASKS:
+      tasks.push(...action.tasks);
+      break;
     case actions.ADD_TASK:
       tasks.push({ title: action.text, isDone: false });
       break;
