@@ -1,4 +1,3 @@
-/* eslint-disable no-return-assign */
 import React from 'react';
 
 import Header from './components/Header/header';
