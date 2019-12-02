@@ -1,10 +1,16 @@
-import React from 'react';
-import Todo from './Todo/todo';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner as spinnerIcon } from '@fortawesome/free-solid-svg-icons';
+import * as actions from '../../store/actionCreators';
 
-const todoList = (props) => {
+import Todo from './Todo/todo';
+
+const TodoList = (props) => {
+  useEffect(() => {
+    props.fetchTasks();
+  }, []);
 
   const renderTodos = () =>
     <ul className="list-group list-group-flush">
@@ -13,10 +19,10 @@ const todoList = (props) => {
           onChecked={(isDone) => props.onChecked(index, isDone)}
           onChange={(value) => props.onChange(index, value)}
           onDelete={() => props.onDelete(index)} />)}
-    </ul>
+    </ul>;
 
   const renderMessage = (content) =>
-    <span className="lead text-muted text-uppercase p-3">{content}</span>
+    <span className="lead text-muted text-uppercase p-3">{content}</span>;
 
   const renderContent = () => {
     if (!props.tasks) {
@@ -24,20 +30,31 @@ const todoList = (props) => {
         <>
           Loading...
           <FontAwesomeIcon icon={spinnerIcon} spin size="lg" className="ml-2" />
-        </>
+        </>,
       );
     } else if (!props.tasks.length) {
       return renderMessage('No tasks to show');
     } else {
       return renderTodos();
     }
-  }
+  };
 
   return (
     <div className="card">
       {renderContent()}
     </div>
-  )
-}
+  );
+};
 
-export default todoList;
+const mapStateToProps = (state) => ({
+  tasks: state.tasks,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchTasks: () => dispatch(actions.fetchTasks()),
+  onChecked: (index, isDone) => dispatch(actions.changeStatus(index, isDone)),
+  onChange: (index, text) => dispatch(actions.edit(index, text)),
+  onDelete: (index) => dispatch(actions.remove(index)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

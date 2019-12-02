@@ -1,5 +1,8 @@
 /* eslint-disable default-case */
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
+import * as actions from '../../store/actionCreators';
 
 const NewTodoForm = (props) => {
   const [textState, setTextState] = useState('');
@@ -36,4 +39,8 @@ const NewTodoForm = (props) => {
   );
 };
 
-export default NewTodoForm;
+const mapDispatchToProps = (dispatch) => ({
+  onAdd: (text) => dispatch(actions.addTask(text)),
+});
+
+export default connect(null, mapDispatchToProps)(NewTodoForm);
